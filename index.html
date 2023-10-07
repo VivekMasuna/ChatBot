@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div>
+        <textarea id="user_input" rows="4" cols="50" placeholder="Ask something..."></textarea>
+        <button onclick="getChatbotResponse()">Ask</button>
+    </div>
+    <div>
+        <p id="chatbot_response"></p>
+    </div>
+
+    <script>
+        function getChatbotResponse() {
+            var user_input = document.getElementById("user_input").value;
+            fetch("/get_response", {
+                method: "POST",
+                body: new URLSearchParams({"user_input": user_input}),
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("chatbot_response").innerText = data.response;
+            });
+        }
+    </script>
+</body>
+</html>
