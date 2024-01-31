@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-document_text = """Your extracted text goes here."""
+document_text = """"""
 
 
 def preprocess_text(text):
